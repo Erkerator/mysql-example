@@ -12,7 +12,13 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "tbl_student")
+@Table(
+        name = "tbl_student",
+        uniqueConstraints = @UniqueConstraint(
+                name = "emailid_unique",
+                columnNames = "email_address"
+        )
+)
 public class Student {
 
     @Id
@@ -21,9 +27,12 @@ public class Student {
     private String firstName;
     private String lastName;
 
-    @Column(name = "email_address")
+    @Column(
+            name = "email_address",
+            nullable = false
+    )
     private String emailId;
-    private String guardianName;
-    private String guardianEmail;
-    private String guardianMobile;
+
+    @Embedded
+    private Guardian guardian;
 }
