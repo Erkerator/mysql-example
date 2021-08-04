@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.sql.Date;
 
 @Entity
 @Data
@@ -32,6 +33,9 @@ public class Student {
             nullable = false
     )
     private String emailId;
+
+    private Date beginningEducation;
+    private Date endingEducation;
 
     @Embedded
     private Guardian guardian;
